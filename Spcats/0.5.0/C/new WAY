@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	int y,w,h,b,c;
+	c=1;
+	w=1;
+scanf ("%d%d",&y,&h);
+b=y;
+while (w<h)
+{
+	c=y*b;
+	y=c;
+	w=w+1;
+}
+printf ("%d",c);
+}

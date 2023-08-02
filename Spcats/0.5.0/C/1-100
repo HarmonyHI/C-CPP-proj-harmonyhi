@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <math.h>
+int main ()
+{
+	long int a,b,c,d,e;
+	scanf ("%ld",&e);
+    a=2;
+	c=0;
+	d=0;
+	while (c<=e)
+	{
+	b=pow(a,c);
+	d=d+b;
+	c=c+1;
+		    printf ("%ld\n",d);
+	}
+    return 0;
+	}

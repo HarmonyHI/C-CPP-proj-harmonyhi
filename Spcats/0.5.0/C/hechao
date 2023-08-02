@@ -1,0 +1,20 @@
+#include<stdio.h>
+int main()
+{
+	int y,w;
+	w=0;
+	printf ("DO YOU LOVE ME\n");
+char y[4096];
+gets (y);
+while (w<50000)
+	{printf ("%d\n",y);
+     printf ("%x\n",y);
+     printf ("%f\n",y);
+     w=w+1;
+     }
+printf ("computational completion\n");
+printf ("%s,too\n",y);
+printf ("伶仃shrink\n");
+printf ("帅到飞起的碳酸根咸鱼\n");
+return 0;
+}

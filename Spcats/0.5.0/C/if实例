@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main()
+{
+	int a;
+	a=6;
+	if (a>6)
+	{
+	printf ("sssss");
+	}
+	else
+	{
+	printf ("ee");
+	return 0;
+	}
+	}
