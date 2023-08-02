@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<math.h>
+int main()
+{
+    double a,b,c;
+    scanf("%lf%lf",&a,&b);
+    while(a>=b)
+    a=a-b;
+    printf("%.2lf",a);
+ 
+ 
+}

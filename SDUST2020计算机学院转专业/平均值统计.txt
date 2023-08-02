@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<math.h>
+int main()
+{
+    int i,tika=0,tikb=0,n;
+    double aver=0;
+    int ting[999];
+    scanf("%d",&n);
+    //ting=(int*)malloc(n+9);
+    for(i=0;i<n;i++)
+    scanf("%d",&ting[i]);
+    for(i=0;i<n;i++)
+    aver=aver+ting[i];
+    aver=aver/n;
+    for(i=0;i<n;i++)
+    {
+                if(ting[i]>aver)
+        tika++;
+        if(ting[i]<aver)
+            tikb++;
+    }
+    printf("%d %d",tika,tikb);
+ 
+}

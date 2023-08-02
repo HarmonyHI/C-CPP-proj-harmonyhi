@@ -1,0 +1,10 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<math.h>
+int main()
+{
+    int a[100];
+    scanf("%s",a);
+    printf("小明\n");
+}

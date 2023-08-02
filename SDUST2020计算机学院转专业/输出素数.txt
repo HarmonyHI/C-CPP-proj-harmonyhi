@@ -1,0 +1,31 @@
+这题只对了一半
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<math.h>
+long long int zhi(long long int a)
+{
+    long long int i;
+    for(i=2;i<=sqrt(a);i++)
+        if(a%i==0)
+        return 0;
+    return 1;
+}
+int main()
+{
+    long long int min,max,i,tik=0;
+    scanf("%lld%lld",&min,&max);
+    for(i=min;i<=max;i++)
+    {
+        if(zhi(i)==1)
+        {
+            if(tik!=0)
+                printf(" ");
+            if(i<2)
+                continue;
+          printf("%lld",i);
+          tik++;
+        }
+ 
+    }
+}

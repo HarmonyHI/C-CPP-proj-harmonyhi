@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<math.h>
+int main()
+{
+    int a;
+    scanf("%d",&a);
+    if(a==1)
+    printf("Computer Science and Technology\n");
+        else if(a==2)
+        printf("Software Engineering\n");
+        else if(a==3)
+        printf("Internet of Things Engineering\n");
+        else if(a==4)
+        printf("Information Security\n");
+        else if(a==5)
+        printf("Intelligent Science and Technology\n");
+        else
+        printf("Wrong Input\n");
+}
