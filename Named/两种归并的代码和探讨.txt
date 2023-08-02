@@ -1,0 +1,96 @@
+数组代码：
+int ecf(int n);   //2的n次方
+int Log(int d,int g);   //logDG
+int get_min_of(int *box,int st,int ed,int n);   //找出区间小值
+void guibing(int *ori_data,int n)            //排序函数
+{
+	int next_data[1000];
+	for(int i=1;ecf(i-1)<=n;i++)    //logn 次
+	{
+		int tmppos=0;
+		for(;tmppos<n;tmppos++)     //n次
+		{
+			int tmpst=tmppos-tmppos%ecf(i);
+			int tmped=tmpst+ecf(i)-1;                //确定小区间边界
+			next_data[tmppos]=get_min_of(ori_data,tmpst,tmped,n);                  //找出区间小值
+		}
+		for(int ii=0;ii<n;ii++)
+		next_data[ii]=ori_data[ii];                            //更新下一次数组
+	}
+}
+int ecf(int n);   //实现2的n次方
+{
+	if(n==0)
+	return 1;
+	int tmp=1;
+	for(int i=1;i<=n;i++)
+	tmp=tmp*2;
+	return tmp;
+}
+int Log(int d,int g);   //实现logDG
+{
+	int ld=d;
+	int i=0;
+	for(;d<g;i++)
+	d=d*ld;
+	return i;
+}
+int get_min_of(int *box,int st,int ed,int n);   //实现找出区间小值
+{
+	int min=box[st],minpos=st;
+	for(int i=st;i<=ed&&i<n;i++)
+	if(box[i]<min)
+	{
+		min=box[i];
+		minpos=i;
+	}
+	box[minpos]=2147483000;   //标记已用
+	return min;
+}
+
+探讨：
+主要的思路是如何将数组分块排序，我使用tmpst，tmped两个下标对目前处理的数组段位置进行确定
+确定时需要使用幂函数和对数函数（自己手写了），确定位置后每次只需将小区间内最小的一个数加在新的一列数后方（这个过程为N次）。然后逐渐扩大区间范围
+循环执行上个步骤，直到小区间的长度倍增超出或等于原区间的长度（这个过程为LOGN次）
+总复杂度为NLOGN，符合归并排序的特征
+
+链表代码：
+node *guibing(node *head)                 //排序函数
+{                  
+    if(!head||!head->next)
+        return head;
+    node* fast=head->next,*slow=head;        //这两个指针用于找到中心
+    while(fast&&fast->next){
+        fast=fast->next->next;
+        slow=slow->next;
+    }
+    node *right=guibing(slow->next);
+    slow->next=nullptr;
+    node *left=guibing(head);
+    if(!left)
+        return right;
+    if(!right)
+        return left;                                       //边界处理
+    node *tmp=new node(0),*head=tmp;
+    while(left&&right){
+        if(left->val<right->val){
+            tmp->next=left;
+            left=left->next;
+        }
+        else{
+            tmp->next=right;
+            right=right->next;
+        }
+        tmp=tmp->next;
+    }
+    if(left)
+        tmp->next=left;
+    if(right)
+        tmp->next=right;
+    return head->next;
+}
+探讨：
+首先将待排序链表从中点分开，分别用递归对左右两半进行归并排序，最后层层将二者合并，就完成了排序
+用这种方法实现，主要在于如何找到链表的中点 ，程序中使用了slow，fast快慢指针，快标一次两步慢标一次一步
+快标走完时，慢标就是在链表中点，其次就是如何合并链表，最后，如何将子问题处理的结果正确合并于主问题也是解决的关键。
+总复杂度为NLOGN，同样符合归并排序的特征
