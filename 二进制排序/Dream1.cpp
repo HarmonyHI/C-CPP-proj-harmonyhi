@@ -1,0 +1,118 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<math.h>
+int deal(int a)
+{
+    int p=0;
+    if((a-4096)>0)
+        {
+            a=a-4096;
+            p++;
+        }
+            if((a-2048)>=0)
+        {
+            a=a-2048;
+            p++;
+        }
+                    if((a-1024)>=0)
+        {
+            a=a-1024;
+            p++;
+        }
+                    if((a-512)>=0)
+        {
+            a=a-512;
+            p++;
+        }
+                    if((a-256)>=0)
+        {
+            a=a-256;
+            p++;
+        }
+                    if((a-128)>=0)
+        {
+            a=a-128;
+            p++;
+        }
+                    if((a-64)>=0)
+        {
+            a=a-64;
+            p++;
+        }
+                    if((a-32)>=0)
+        {
+            a=a-32;
+            p++;
+        }
+                    if((a-16)>=0)
+        {
+            a=a-16;
+            p++;
+        }
+                    if((a-8)>=0)
+        {
+            a=a-8;
+            p++;
+        }
+                    if((a-4)>=0)
+        {
+            a=a-4;
+            p++;
+        }
+                    if((a-2)>=0)
+        {
+            a=a-2;
+            p++;
+        }
+                    if((a-1)>=0)
+        {
+            a=a-1;
+            p++;
+        }
+        return p;
+}
+void swap(int *a,int *b)
+{
+    int t;
+    t=*a;
+    *a=*b;
+    *b=t;
+}
+int main()
+{
+    int ting[10],i,bkp[2][10],ii,tik=0;
+    for(i=0;i<10;i++)
+        scanf("%d",&ting[i]);
+    for(i=0;i<10;i++)
+    {
+        bkp[0][i]=ting[i];
+        bkp[1][i]=deal(ting[i])
+    }
+    for(i=0;i<10;i++)
+        for(ii=0;ii<10;ii++)
+        {
+                    if(bkp[1][ii]>bkp[1][ii+1])
+        {
+            swap(&bkp[0][ii],&bkp[0][ii+1]);
+            swap(&bkp[1][ii],&bkp[1][ii+1]);
+        }
+        if(bkp[1][ii]==bkp[1][ii+1])
+        {
+            if(bkp[0][ii]>bkp[0][ii+1])
+            swap(&bkp[0][ii],&bkp[0][ii+1]);
+            swap(&bkp[1][ii],&bkp[1][ii+1]);
+        }
+        }
+ 
+        for(i=0;i<10;i++)
+            {
+                if(tik!=0)
+                    printf(" ");
+                printf("%d",bkp[0][i]);
+                tik++;
+            }
+ 
+ char s[10];
+ gets(s); 
+}
